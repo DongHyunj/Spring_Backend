@@ -24,12 +24,14 @@ public class AuthUserDetails implements UserDetails {
                 .idx(entity.getIdx())
                 .username(entity.getEmail())
                 .password(entity.getPassword())
+                .enable(entity.isEnable())
+                .role(entity.getRole())
                 .build();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
     @Override
@@ -59,6 +61,6 @@ public class AuthUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enable;
     }
 }
