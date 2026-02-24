@@ -1,10 +1,12 @@
 package org.example.backend.user.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 public class UserDto {
 
     @Getter
+    @NoArgsConstructor
     public static class SignupReq {
         private String email;
         private String name;
@@ -17,5 +19,12 @@ public class UserDto {
                     .password(this.password)
                     .build();
         }
+    }
+
+    @Getter
+    @NoArgsConstructor
+    public static class LoginReq {
+        private String email;
+        private String password;
     }
 }
