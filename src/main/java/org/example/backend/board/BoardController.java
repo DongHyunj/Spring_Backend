@@ -33,4 +33,10 @@ public class BoardController {
         return ResponseEntity.ok(board);
     }
 
+    @PatchMapping("/list/{idx}/update")
+    public ResponseEntity update(@PathVariable Long idx, @RequestBody BoardDto.UpdateReq dto) {
+        boardService.update(idx, dto);
+        return ResponseEntity.ok("성공");
+    }
+
 }
