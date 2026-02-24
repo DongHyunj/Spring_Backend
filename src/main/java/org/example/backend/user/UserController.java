@@ -3,6 +3,7 @@ package org.example.backend.user;
 import lombok.RequiredArgsConstructor;
 import org.example.backend.user.model.AuthUserDetails;
 import org.example.backend.user.model.UserDto;
+import org.example.backend.util.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +30,11 @@ public class UserController {
 
         Authentication authentication = authenticationManager.authenticate(token);
         AuthUserDetails user = (AuthUserDetails)authentication.getPrincipal();
+
+        if(user != null) {
+            String jwt = JwtUtil.createToken(user.getIdx(), user.getUsername());
+            return ResponseEntity.ok().header("Set-Cookie", "ATOKEN=" + jwt + "; Path=/").build();
+        }
 
         return ResponseEntity.ok(user);
     }
