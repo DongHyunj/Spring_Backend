@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/boards")
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
@@ -32,13 +32,13 @@ public class BoardController {
         return ResponseEntity.ok(board);
     }
 
-    @PatchMapping("/list/{idx}/update")
+    @PatchMapping("/edit/{idx}")
     public ResponseEntity update(@PathVariable Long idx, @RequestBody BoardDto.UpdateReq dto) {
         boardService.update(idx, dto);
         return ResponseEntity.ok("성공");
     }
 
-    @DeleteMapping("/list/{idx}/delete")
+    @DeleteMapping("/delete/{idx}")
     public ResponseEntity delete(@PathVariable Long idx) {
         boardService.delete(idx);
         return ResponseEntity.ok("성공");
