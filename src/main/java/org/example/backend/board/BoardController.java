@@ -39,4 +39,10 @@ public class BoardController {
         return ResponseEntity.ok("성공");
     }
 
+    @DeleteMapping("/list/{idx}/delete")
+    public ResponseEntity delete(@PathVariable Long idx) {
+        boardService.delete(idx);
+        return ResponseEntity.ok("성공");
+    }
+
 }
