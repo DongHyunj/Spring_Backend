@@ -34,4 +34,9 @@ public class BoardService {
         board.setTitle(dto.getTitle());
         board.setContents(dto.getContents());
     }
+
+    @Transactional
+    public void delete(Long idx) {
+        boardRepository.deleteById(idx);
+    }
 }
