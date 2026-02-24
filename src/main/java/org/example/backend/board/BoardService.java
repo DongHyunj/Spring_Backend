@@ -1,8 +1,11 @@
 package org.example.backend.board;
 
 import lombok.RequiredArgsConstructor;
+import org.example.backend.board.model.Board;
 import org.example.backend.board.model.BoardDto;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -12,4 +15,10 @@ public class BoardService {
     public void register(BoardDto.RegReq dto) {
         boardRepository.save(dto.toEntity());
     }
+
+    public List<BoardDto.ListRes> list() {
+        List<Board> boardList = boardRepository.findAll();
+        return boardList.stream().map(BoardDto.ListRes::from).toList();
+    }
+
 }
