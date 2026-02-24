@@ -20,17 +20,19 @@ public class BoardDto {
 
     @Getter
     @Builder
-    public static class ListRes {
+    public static class Res {
         private Long idx;
         private String title;
         private String contents;
 
-        public static ListRes from(Board entity) {
-            return ListRes.builder()
+        public static Res from(Board entity) {
+            return Res.builder()
                     .idx(entity.getIdx())
                     .title(entity.getTitle())
                     .contents(entity.getContents())
                     .build();
         }
     }
+
+
 }
