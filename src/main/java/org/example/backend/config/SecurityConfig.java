@@ -39,14 +39,13 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(
                 (auth) -> auth
-                        .requestMatchers("/user/signup", "/board/**").permitAll()
+                        .requestMatchers("/user/signup", "/user/login", "/board/**").permitAll()
                         .anyRequest().authenticated()
         );
 
         http.csrf(AbstractHttpConfigurer::disable);
         http.httpBasic(AbstractHttpConfigurer::disable);
         http.formLogin(AbstractHttpConfigurer::disable);
-
 
         return http.build();
     }
