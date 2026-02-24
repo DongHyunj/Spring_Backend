@@ -1,5 +1,6 @@
 package org.example.backend.board;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.backend.board.model.Board;
 import org.example.backend.board.model.BoardDto;
@@ -24,5 +25,13 @@ public class BoardService {
     public BoardDto.Res read(Long idx) {
         Board board = boardRepository.findById(idx).orElseThrow();
         return BoardDto.Res.from(board);
+    }
+
+    @Transactional
+    public void update(Long idx, BoardDto.UpdateReq dto) {
+        Board board = boardRepository.findById(idx).orElseThrow();
+
+        board.setTitle(dto.getTitle());
+        board.setContents(dto.getContents());
     }
 }

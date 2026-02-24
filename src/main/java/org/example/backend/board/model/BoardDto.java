@@ -3,6 +3,7 @@ package org.example.backend.board.model;
 import lombok.*;
 
 public class BoardDto {
+
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
@@ -32,6 +33,13 @@ public class BoardDto {
                     .contents(entity.getContents())
                     .build();
         }
+    }
+
+    @Getter
+    @NoArgsConstructor
+    public static class UpdateReq {
+        private String title;
+        private String contents;
     }
 
 
