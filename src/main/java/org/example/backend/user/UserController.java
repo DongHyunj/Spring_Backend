@@ -50,8 +50,6 @@ public class UserController {
     public ResponseEntity emailVerify(String uuid) {
         userService.emailVerify(uuid);
 
-        return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create("http://localhost:5173/user/login"))
-                .build();
+        return ResponseEntity.ok("이메일 인증 완료");
     }
 }

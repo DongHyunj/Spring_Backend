@@ -20,7 +20,7 @@ public class EmailService {
         MimeMessage message = mailSender.createMimeMessage();
         try {
             String uuid = UUID.randomUUID().toString();
-            String link = "http://localhost:8080/user/verify?uuid=" + uuid;
+            String link = "http://localhost:5173/verify?uuid=" + uuid;
 
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             helper.setTo(email);
