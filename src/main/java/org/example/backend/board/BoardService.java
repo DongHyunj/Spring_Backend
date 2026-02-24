@@ -16,9 +16,13 @@ public class BoardService {
         boardRepository.save(dto.toEntity());
     }
 
-    public List<BoardDto.ListRes> list() {
+    public List<BoardDto.Res> list() {
         List<Board> boardList = boardRepository.findAll();
-        return boardList.stream().map(BoardDto.ListRes::from).toList();
+        return boardList.stream().map(BoardDto.Res::from).toList();
     }
 
+    public BoardDto.Res read(Long idx) {
+        Board board = boardRepository.findById(idx).orElseThrow();
+        return BoardDto.Res.from(board);
+    }
 }

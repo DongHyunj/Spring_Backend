@@ -23,8 +23,14 @@ public class BoardController {
 
     @GetMapping("/list")
     public ResponseEntity list() {
-        List<BoardDto.ListRes> boardList = boardService.list();
+        List<BoardDto.Res> boardList = boardService.list();
         return ResponseEntity.ok(boardList);
+    }
+
+    @GetMapping("/list/{idx}")
+    public ResponseEntity read(@PathVariable Long idx) {
+        BoardDto.Res board = boardService.read(idx);
+        return ResponseEntity.ok(board);
     }
 
 }
