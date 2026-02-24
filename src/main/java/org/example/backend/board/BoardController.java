@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/board")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class BoardController {
     private final BoardService boardService;
 
